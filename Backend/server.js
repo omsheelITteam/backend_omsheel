@@ -5,6 +5,11 @@ const connectDB = require("../Backend/config/monogoDB");
 const app = express();
 const authRouter=require('../Backend/routes/authRouter');
 const userRoute = require("./routes/userRoute");
+// app.use(cors({origin:process.env.PORT, credentials: true }));
+app.use(cors({
+  origin: "https://frontend-omsheel-hf4s.vercel.app", // ✅ allow only your frontend domain
+  credentials: true // ✅ allow cookies / sessions
+}));
 app.use(cors({origin:process.env.PORT, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
