@@ -1,6 +1,6 @@
 const express = require("express");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const connectDB = require("../Backend/config/monogoDB");
 const app = express();
 const authRouter=require('../Backend/routes/authRouter');
