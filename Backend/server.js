@@ -57,10 +57,13 @@ const userRoute = require("./routes/userRoute");
 //   origin: allowedOrigins,
 //   credentials: true
 // }));
+const cors = require("cors");
+
 const allowedOrigins = [
   "http://localhost:5173",
-  
-  
+  "https://frontend-omsheel.vercel.app",
+  "https://omsheelgroup.in",
+  "https://www.omsheelgroup.in"
 ];
 
 app.use(cors({
@@ -73,6 +76,7 @@ app.use(cors({
   },
   credentials: true
 }));
+
 
 
 app.use(express.json());
