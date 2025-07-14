@@ -57,7 +57,7 @@ const userRoute = require("./routes/userRoute");
 //   origin: allowedOrigins,
 //   credentials: true
 // }));
-const cors = require("cors");
+// const cors = require("cors");
 
 const allowedOrigins = [
   "http://localhost:5173",
