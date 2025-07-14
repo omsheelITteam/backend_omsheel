@@ -48,15 +48,32 @@ const userRoute = require("./routes/userRoute");
 //   },
 //   credentials: true
 // }));
+// const allowedOrigins = [
+//   "http://localhost:5173",
+//   "https://frontend-omsheel-i9bc-5dhyhxg7n-shathamanyus-projects.vercel.app"
+// ];
+
+// app.use(cors({
+//   origin: allowedOrigins,
+//   credentials: true
+// }));
 const allowedOrigins = [
   "http://localhost:5173",
+  // "https://frontend-omsheel.vercel.app",
   "https://frontend-omsheel-i9bc-5dhyhxg7n-shathamanyus-projects.vercel.app"
 ];
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS: " + origin));
+    }
+  },
   credentials: true
 }));
+
 
 app.use(express.json());
 app.use(cookieParser());
