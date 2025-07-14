@@ -35,7 +35,7 @@ const userRoute = require("./routes/userRoute");
 // ✅ Proper CORS setup
 // const allowedOrigins = [
 //   "http://localhost:5173",
-//   "https://frontend-omsheel-hf4s.vercel.app"
+//   "https://frontend-omsheel-hf4s.vercel.app/"
 // ];
 
 // app.use(cors({
