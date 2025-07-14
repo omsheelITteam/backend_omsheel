@@ -511,16 +511,54 @@ const logout = async (req, res) => {
 };
 
 // VERIFY EMAIL
+// const verifyEmail = async (req, res) => {
+//   const { code } = req.body;
+//   const token = req.cookies.token;
+
+//   if (!token) {
+//     return res.status(401).json({ success: false, message: "Not Authorized" });
+//   }
+
+//   try {
+//     const decoded = jwt.verify(token, JWT_SECRETKEY);
+//     const user = await userModel.findOne({
+//       _id: decoded.id,
+//       verifyOtp: code,
+//       verifyOtpExpireAt: { $gt: Date.now() },
+//     });
+
+//     if (!user) {
+//       return res.status(400).json({ success: false, message: "Invalid or expired code" });
+//     }
+
+//     user.isAccountVerified = true;
+//     user.verifyOtp = undefined;
+//     user.verifyOtpExpireAt = undefined;
+//     await user.save();
+
+//     await senderEmail.sendMail({
+//       from: process.env.SENDER_EMAIL,
+//       to: user.email,
+//       subject: "Email Verified Successfully",
+//       html: EMAIL_VERIFIED_SUCCESSFULLY,
+//     });
+
+//     return res.status(200).json({ success: true, message: "Email verified successfully" });
+//   } catch (error) {
+//     return res.status(500).json({ success: false, message: error.message });
+//   }
+// };
 const verifyEmail = async (req, res) => {
   const { code } = req.body;
   const token = req.cookies.token;
 
   if (!token) {
+    console.log("No token received in cookies.");
     return res.status(401).json({ success: false, message: "Not Authorized" });
   }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRETKEY);
+    const decoded = jwt.verify(token, process.env.JWT_SECRETKEY);
     const user = await userModel.findOne({
       _id: decoded.id,
       verifyOtp: code,
