@@ -33,19 +33,28 @@ const authRouter = require("../Backend/routes/authRouter");
 const userRoute = require("./routes/userRoute");
 
 // ✅ Proper CORS setup
+// const allowedOrigins = [
+//   "http://localhost:5173",
+//   "https://frontend-omsheel-hf4s.vercel.app"
+// ];
+
+// app.use(cors({
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true
+// }));
 const allowedOrigins = [
   "http://localhost:5173",
   "https://frontend-omsheel-hf4s.vercel.app"
 ];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: allowedOrigins,
   credentials: true
 }));
 
