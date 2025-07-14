@@ -59,8 +59,8 @@ const userRoute = require("./routes/userRoute");
 // }));
 const allowedOrigins = [
   "http://localhost:5173",
-  // "https://frontend-omsheel.vercel.app",
-  "https://frontend-omsheel-i9bc-5dhyhxg7n-shathamanyus-projects.vercel.app"
+  "https://frontend-omsheel-i9bc-5dhyhxg7n-shathamanyus-projects.vercel.app",
+  "https://www.omsheelgroup.in"
 ];
 
 app.use(cors({
