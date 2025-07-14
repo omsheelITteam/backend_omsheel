@@ -564,7 +564,8 @@ const verifyEmail = async (req, res) => {
       verifyOtp: code,
       verifyOtpExpireAt: { $gt: Date.now() },
     });
-
+  console.log(req.cookies)
+  console.log(token)
     if (!user) {
       return res.status(400).json({ success: false, message: "Invalid or expired code" });
     }
